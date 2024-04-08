@@ -4,7 +4,7 @@
                (selectionChange)="onLinePlotSelectionChange($event)">
 </app-line-plot>
 
-<app-plot-overlay class="plot-overlay"
+<app-overlay class="overlay"
                   cdkDrag
                   *ngFor="let overlay of overlays"
                   [cdkDragFreeDragPosition]="overlay.currentPosition">
@@ -15,5 +15,5 @@
 
   <!-- Here we don't provide minimized content, just as an example. -->
 
-</app-plot-overlay>
+</app-overlay>
 

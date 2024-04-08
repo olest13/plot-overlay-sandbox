@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RedLineViewComponent } from './red-line-view.component';
 
-describe('ColoredLineViewComponent', () => {
+describe('RedLineViewComponent', () => {
   let component: RedLineViewComponent;
   let fixture: ComponentFixture<RedLineViewComponent>;
 

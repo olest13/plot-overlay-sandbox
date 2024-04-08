@@ -1,11 +1,11 @@
 import { Component, ContentChild, TemplateRef } from '@angular/core';
 
 @Component({
-  selector: 'app-plot-overlay',
-  templateUrl: './plot-overlay.component.html',
-  styleUrls: ['./plot-overlay.component.scss']
+  selector: 'app-overlay',
+  templateUrl: './overlay.component.html',
+  styleUrls: ['./overlay.component.scss']
 })
-export class PlotOverlayComponent {
+export class OverlayComponent {
   @ContentChild('minimizedContent') minimizedContentTemplate: TemplateRef<any>;
 
   public isMinimized = true;
