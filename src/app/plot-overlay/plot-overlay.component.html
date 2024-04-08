@@ -1,0 +1,25 @@
+<div class="overlay-container">
+
+  <div class="overlay-content">
+    <!-- If minimized content is provided and the overlay is minimized, display the minimized content -->
+    <ng-container *ngIf="hasMinimizedContent && isMinimized; else defaultContent">
+      <ng-container *ngTemplateOutlet="minimizedContentTemplate"></ng-container>
+    </ng-container>
+
+    <!-- Otherwise, display the default content -->
+    <ng-template #defaultContent>
+      <ng-content></ng-content>
+    </ng-template>
+  </div>
+
+  <div class="overlay-controls">
+    <button (click)="onCloseClick()">
+      Close
+    </button>
+
+    <button *ngIf="hasMinimizedContent"
+            (click)="onMinimizeMaximizeClick()">
+      {{ isMinimized ? 'Maximize' : 'Minimize' }}
+    </button>
+  </div>
+</div>

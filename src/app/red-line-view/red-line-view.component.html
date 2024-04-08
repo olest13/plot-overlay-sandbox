@@ -1,0 +1,22 @@
+<app-line-plot class="line-plot"
+               [data]="linePlotData"
+               (selectionStart)="onLinePlotSelectionStart()"
+               (selectionChange)="onLinePlotSelectionChange($event)">
+</app-line-plot>
+
+<app-plot-overlay class="plot-overlay"
+                  cdkDrag
+                  *ngFor="let overlay of overlays"
+                  [cdkDragFreeDragPosition]="overlay.currentPosition">
+  <!-- This is default ng-content will be rendered in `ng-template #defaultContent`. -->
+  <p class="red-default-overlay-item">
+    Imagine a huge table here displaying all the data for the current overlay with range {{overlay.value}}
+  </p>
+
+  <!-- If provided, overlay component will render minimized version. -->
+  <ng-template #minimizedContent>
+    <p class="red-minimized-overlay-item">
+      {{overlay.value}}
+    </p>
+  </ng-template>
+</app-plot-overlay>

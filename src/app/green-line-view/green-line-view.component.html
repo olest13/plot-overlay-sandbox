@@ -1,0 +1,19 @@
+<app-line-plot class="line-plot"
+               [data]="linePlotData"
+               (selectionStart)="onLinePlotSelectionStart()"
+               (selectionChange)="onLinePlotSelectionChange($event)">
+</app-line-plot>
+
+<app-plot-overlay class="plot-overlay"
+                  cdkDrag
+                  *ngFor="let overlay of overlays"
+                  [cdkDragFreeDragPosition]="overlay.currentPosition">
+  <!-- This is default ng-content will be rendered in `ng-template #defaultContent`. -->
+  <p class="green-default-overlay-item">
+    Example if we provide only default content.
+  </p>
+
+  <!-- Here we don't provide minimized content. -->
+
+</app-plot-overlay>
+
