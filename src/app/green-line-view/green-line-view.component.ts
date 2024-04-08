@@ -22,22 +22,18 @@ export class GreenLineViewComponent {
   public linePlotData: LinePlotData;
   public overlays: GreenViewOverlayData[] = [];
 
-  private colorSubject: Subject<string> = new Subject<string>();
-  private pointsSubject: Subject<DataPoint[]> = new Subject<DataPoint[]>();
-
   // Mouse client position (x, y) relative to the component.
   private mousePosition: { x: number; y: number };
 
   constructor(private viewContainerRef: ViewContainerRef) {
-    this.pointsSubject.subscribe(points => this.linePlotData = {
-      color: COLOR,
-      points
-    });
   }
 
   @Input()
   public set points(points: DataPoint[]) {
-    this.pointsSubject.next(points);
+    this.linePlotData = {
+      color: COLOR,
+      points
+    };
   }
 
   public onLinePlotSelectionStart(): void {

@@ -1,5 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, ContentChild, TemplateRef } from '@angular/core';
-import { PlotOverlayData } from './plot-overlay-data';
+import { Component, ContentChild, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-plot-overlay',
@@ -20,6 +19,7 @@ export class PlotOverlayComponent {
   }
 
   public onCloseClick() {
+    // TODO:9 Apr 2024:oleh.stefanovych:
     // Here we have 2 possible ways to close the overlay:
     // 1. Emit an event to the parent component and let it decide what to do.
     //    In our case we want to remove current object from the list of overlays.

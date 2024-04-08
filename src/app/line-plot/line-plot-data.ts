@@ -1,4 +1,3 @@
-
 export interface LinePlotData {
   points: DataPoint[];
   color: string;

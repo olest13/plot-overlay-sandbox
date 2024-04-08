@@ -8,9 +8,9 @@ describe('LinePlotComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LinePlotComponent ]
+      declarations: [LinePlotComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(LinePlotComponent);
     component = fixture.componentInstance;

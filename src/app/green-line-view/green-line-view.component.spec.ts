@@ -8,9 +8,9 @@ describe('ColoredLineViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GreenLineViewComponent ]
+      declarations: [GreenLineViewComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(GreenLineViewComponent);
     component = fixture.componentInstance;

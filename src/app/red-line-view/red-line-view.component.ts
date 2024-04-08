@@ -1,8 +1,7 @@
-import { Component, OnInit, Input, HostListener, ViewContainerRef } from '@angular/core';
-import { Subject, combineLatest } from 'rxjs';
+import { Component, Input, HostListener, ViewContainerRef } from '@angular/core';
+import { Subject } from 'rxjs';
 import { DataPoint, LinePlotData } from '../line-plot/line-plot-data';
 import { LinePlotSelectionEvent } from '../line-plot/line-plot-selection-event';
-import { PlotOverlayData } from '../plot-overlay/plot-overlay-data';
 
 interface RedViewOverlayData {
   currentPosition: { x: number; y: number };
@@ -23,22 +22,18 @@ export class RedLineViewComponent {
   public linePlotData: LinePlotData;
   public overlays: RedViewOverlayData[] = [];
 
-  private colorSubject: Subject<string> = new Subject<string>();
-  private pointsSubject: Subject<DataPoint[]> = new Subject<DataPoint[]>();
-
   // Mouse client position (x, y) relative to the component.
   private mousePosition: { x: number; y: number };
 
   constructor(private viewContainerRef: ViewContainerRef) {
-    this.pointsSubject.subscribe(points => this.linePlotData = {
-      color: COLOR,
-      points
-    });
   }
 
   @Input()
   public set points(points: DataPoint[]) {
-    this.pointsSubject.next(points);
+    this.linePlotData = {
+      color: COLOR,
+      points
+    };
   }
 
   public onLinePlotSelectionStart(): void {
