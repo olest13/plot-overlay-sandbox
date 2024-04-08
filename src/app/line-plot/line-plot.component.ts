@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit, EventEmitter, Output, Input } from '@angular/core';
 import * as d3 from "d3";
 import { Subject, combineLatest } from 'rxjs';
 import { LinePlotData, DataPoint } from './line-plot-data';
@@ -56,7 +56,7 @@ export class LinePlotComponent implements AfterViewInit {
 
     this.drawData(data);
 
-    this.addSelectionHandlers();
+    this.addEventHandlers();
   }
 
   private configScales(data: LinePlotData, width: number, height: number): void {
@@ -99,12 +99,10 @@ export class LinePlotComponent implements AfterViewInit {
   }
 
   private drawData(data: LinePlotData): void {
-    // Create a line generator for objects with x and y properties
     const line = d3.line<DataPoint>()
       .x(d => this.xScale(d.x))
       .y(d => this.yScale(d.y));
 
-    // Draw the random line
     this.plotSvg.append("path")
       .datum(data.points)
       .attr("fill", "none")
@@ -113,42 +111,7 @@ export class LinePlotComponent implements AfterViewInit {
       .attr("d", line);
   }
 
-  private addSelectionHandlers() {
-    // this.plotSvg.call(d3.drag<SVGSVGElement, unknown, unknown>()
-    //   .on("start", (event) => {
-    //     this.selections.push({
-    //       startComponentX: event.x,
-    //       startComponentY: event.y,
-    //       endComponentX: event.x,
-    //     });
-    //     this.selectionStart.emit();
-    //   })
-    //   .on("drag", (event) => {
-    //     // update the last selection
-    //     const lastSelection = this.selections[this.selections.length - 1];
-    //     lastSelection.endComponentX = event.x;
-    //
-    //     // Emit the selection change event.
-    //     this.selectionChange.emit({
-    //       start: this.xScale.invert(lastSelection.startComponentX),
-    //       end: this.xScale.invert(lastSelection.endComponentX)
-    //     });
-    //
-    //     // redraw all selections
-    //     this.plotSvg.selectAll(".selection").remove();
-    //     this.selections.forEach(selection => {
-    //       this.plotSvg.append("line")
-    //         .attr("class", "selection")
-    //         .attr("x1", selection.startComponentX)
-    //         .attr("x2", selection.endComponentX)
-    //         .attr("y1", selection.startComponentY)
-    //         .attr("y2", selection.startComponentY)
-    //         .attr("stroke", "black")
-    //         .attr("stroke-width", 2);
-    //     });
-    //   })
-    // );
-
+  private addEventHandlers() {
     this.plotSvg.on("mousedown", (event) => {
       console.log("mousedown", event);
       this.isDragging = true;
